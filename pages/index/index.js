@@ -63,6 +63,7 @@ Page({
         },
         data: {
           model: 'ep-20250101121109-gk765',
+          stream: true,
           messages: [
             {
               role: 'user',
@@ -72,6 +73,35 @@ Page({
         },
         success: function(res) {
           console.log('API响应:', res.data); // 添加日志
+          // 检查响应数据是否为字符串
+          if (typeof res.data === 'string') {
+            // 分割响应数据为多行
+            const lines = res.data.split('\n');
+            let fullContent = '';
+            
+            // 处理每一行数据
+            for (const line of lines) {
+              if (line.startsWith('data: ')) {
+                const jsonStr = line.substring(6); // 移除 "data: " 前缀
+                
+                // 跳过 [DONE] 标记
+                if (jsonStr.trim() === '[DONE]') continue;
+                
+                try {
+                  const jsonData = JSON.parse(jsonStr);
+                  if (jsonData.choices && jsonData.choices[0].delta && jsonData.choices[0].delta.content) {
+                    fullContent += jsonData.choices[0].delta.content;
+                  }
+                } catch (e) {
+                  console.error('JSON解析错误:', e);
+                }
+              }
+            }
+            
+            if (fullContent) {
+              return resolve({ content: fullContent });
+            }
+          }
           if (res.data && res.data.choices && res.data.choices[0]) {
             const content = res.data.choices[0].message.content;
             resolve({ content });

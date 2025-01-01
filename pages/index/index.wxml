@@ -16,8 +16,14 @@
       >获取答案</button>
     </view>
     
-    <view class="answer-card" wx:if="{{answer}}" style="background-color: {{cardColor}}">
-      <text class="answer-text">{{answer}}</text>
+    <view class="answer-wrapper" wx:if="{{answer}}">
+      <scroll-view 
+        class="answer-card" 
+        scroll-y="true"
+        style="background-color: {{cardColor}}"
+      >
+        <text class="answer-text">{{answer}}</text>
+      </scroll-view>
     </view>
   </view>
 </scroll-view>
