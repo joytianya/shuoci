@@ -10,16 +10,24 @@
         "coverView": true,
         "es6": true,
         "postcss": true,
-        "minified": true,
-        "enhance": true,
+        "minified": false,
+        "enhance": false,
         "showShadowRootInWxmlPanel": true,
-        "packNpmRelationList": [],
+        "packNpmRelationList": [
+            {
+                "packageJsonPath": "./package.json",
+                "miniprogramNpmDistDir": "./"
+            }
+        ],
         "babelSetting": {
             "ignore": [],
             "disablePlugins": [],
             "outputPath": ""
         },
-        "condition": true
+        "condition": true,
+        "sourceMap": true,
+        "useSourceMap": true,
+        "packNpmManually": true
     },
     "condition": {},
     "editorSetting": {
@@ -27,6 +35,12 @@
         "tabSize": 4
     },
     "projectArchitecture": "multiPlatform",
+    "platform": {
+        "ios": {
+            "sourcemap": true,
+            "enableDebug": true
+        }
+    },
     "simulatorPluginLibVersion": {
         "wxext14566970e7e9f62": "3.6.5-16"
     }

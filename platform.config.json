@@ -1,0 +1,12 @@
+{
+    "ios": {
+        "compiler": {
+            "sourcemap": true,
+            "enableDebug": true,
+            "skipTransform": false
+        },
+        "runtime": {
+            "enableSourceMap": true
+        }
+    }
+} 

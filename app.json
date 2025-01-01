@@ -22,5 +22,12 @@
   },
   "componentFramework": "glass-easel",
   "sitemapLocation": "sitemap.json",
-  "lazyCodeLoading": "requiredComponents"
+  "lazyCodeLoading": "requiredComponents",
+  "debug": true,
+  "plugins": {
+    "wxfa43a4a7041a84de": {
+      "version": "latest",
+      "provider": "wxfa43a4a7041a84de"
+    }
+  }
 }
